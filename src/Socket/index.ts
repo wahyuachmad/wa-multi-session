@@ -19,6 +19,7 @@ import {
   saveDocumentHandler,
   saveImageHandler,
   saveVideoHandler,
+  saveAudioHandler
 } from "../Utils/save-media";
 import { WhatsappError } from "../Error";
 import { parseMessageStatusCodeToReadable } from "../Utils/message-status";
@@ -113,6 +114,7 @@ export const startSession = async (
           msg.sessionId = sessionId;
           msg.saveImage = (path) => saveImageHandler(msg, path);
           msg.saveVideo = (path) => saveVideoHandler(msg, path);
+          msg.saveAudio = (path) => saveAudioHandler(msg, path);
           msg.saveDocument = (path) => saveDocumentHandler(msg, path);
           callback.get(CALLBACK_KEY.ON_MESSAGE_RECEIVED)?.({
             ...msg,
@@ -217,6 +219,7 @@ export const startSessionWithPairingCode = async (
           msg.sessionId = sessionId;
           msg.saveImage = (path) => saveImageHandler(msg, path);
           msg.saveVideo = (path) => saveVideoHandler(msg, path);
+          msg.saveAudio = (path) => saveAudioHandler(msg, path);
           msg.saveDocument = (path) => saveDocumentHandler(msg, path);
           callback.get(CALLBACK_KEY.ON_MESSAGE_RECEIVED)?.({
             ...msg,

@@ -36,6 +36,11 @@ export interface MessageReceived extends proto.IWebMessageInfo {
    */
   saveVideo: (path: string) => Promise<void>;
   /**
+   * @param path save video location path with extension
+   * @example "./myvideo.mp4"
+   */
+  saveAudio: (path: string) => Promise<void>;
+  /**
    * @param path save image location path without extension
    * @example "./mydocument"
    */
