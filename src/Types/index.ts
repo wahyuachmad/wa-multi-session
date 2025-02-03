@@ -47,6 +47,12 @@ export interface StartSessionParams {
    * Print QR Code into Terminal
    */
   printQR?: boolean;
+  
+  /**
+   * Status Presence track
+   */
+  emitOwnEvents?: boolean;
+
 
   // session events
   onQRUpdated?: (qr: string) => void;
