@@ -35,7 +35,7 @@ const P = require("pino")({
 
 export const startSession = async (
   sessionId = "mysession",
-  options: StartSessionParams = { printQR: true, emitOwnEvents: false}
+  options: StartSessionParams = { printQR: true, emitOwnEvents: false, syncFullHistory: false}
 ): Promise<WASocket> => {
   if (isSessionExistAndRunning(sessionId))
     throw new WhatsappError(Messages.sessionAlreadyExist(sessionId));
@@ -49,6 +49,7 @@ export const startSession = async (
       version,
       printQRInTerminal: options.printQR,
       emitOwnEvents: options.emitOwnEvents,
+      syncFullHistory: options.syncFullHistory,
       auth: state,
       logger: P,
       markOnlineOnConnect: false,

@@ -47,11 +47,16 @@ export interface StartSessionParams {
    * Print QR Code into Terminal
    */
   printQR?: boolean;
-  
+
   /**
    * Status Presence track
    */
   emitOwnEvents?: boolean;
+
+  /**
+   * sync history
+   */
+  syncFullHistory?: boolean
 
 
   // session events
