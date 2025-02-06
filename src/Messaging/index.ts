@@ -32,7 +32,6 @@ export const sendTextMessage = async ({
       contextInfo: {
           participant: isBot ? 'bot@whatsapp.net' : undefined,
           stanzaId: isBot ? 'bot-message' : undefined,
-          quotedMessage: isBot ? { conversation: text } : undefined,
       }
     },
     {
