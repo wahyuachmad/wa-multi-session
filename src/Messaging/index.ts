@@ -18,6 +18,7 @@ export const sendTextMessage = async ({
   to,
   text = "",
   isGroup = false,
+  isBot = false,
   ...props
 }: SendMessageTypes): Promise<proto.WebMessageInfo | undefined> => {
   const session = getSession(sessionId);
@@ -28,6 +29,11 @@ export const sendTextMessage = async ({
     to,
     {
       text: text,
+      contextInfo: {
+          participant: isBot ? 'bot@whatsapp.net' : undefined,
+          stanzaId: isBot ? 'bot-message' : undefined,
+          quotedMessage: isBot ? { conversation: text } : undefined,
+      }
     },
     {
       quoted: props.answering,

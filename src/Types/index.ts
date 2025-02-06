@@ -4,7 +4,7 @@ export interface SendMessageTypes {
   to: string | number;
   text?: string;
   sessionId: string;
-  is_bot?: boolean;
+  isBot?: boolean;
   isGroup?: boolean;
   answering?: proto.IWebMessageInfo;
 }
