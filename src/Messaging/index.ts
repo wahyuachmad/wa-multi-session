@@ -17,7 +17,6 @@ export const sendTextMessage = async ({
   sessionId,
   to,
   text = "",
-  is_bot = false,
   isGroup = false,
   ...props
 }: SendMessageTypes): Promise<proto.WebMessageInfo | undefined> => {
@@ -31,7 +30,6 @@ export const sendTextMessage = async ({
       text: text,
     },
     {
-      is_bot: is_bot,
       quoted: props.answering,
     }
   );
