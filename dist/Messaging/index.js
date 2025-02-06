@@ -32,13 +32,18 @@ const is_exist_1 = require("../Utils/is-exist");
 const mime_1 = __importDefault(require("mime"));
 const Error_1 = require("../Error");
 const sendTextMessage = (_a) => __awaiter(void 0, void 0, void 0, function* () {
-    var { sessionId, to, text = "", isGroup = false } = _a, props = __rest(_a, ["sessionId", "to", "text", "isGroup"]);
+    var { sessionId, to, text = "", isGroup = false, isBot = false } = _a, props = __rest(_a, ["sessionId", "to", "text", "isGroup", "isBot"]);
     const session = (0, Socket_1.getSession)(sessionId);
     if (!session)
         throw new Error_1.WhatsappError(Defaults_1.Messages.sessionNotFound(sessionId));
     to = (0, Utils_1.phoneToJid)({ to, isGroup });
     return yield session.sendMessage(to, {
         text: text,
+        contextInfo: {
+            participant: isBot ? 'bot@whatsapp.net' : undefined,
+            stanzaId: isBot ? 'bot-message' : undefined,
+            quotedMessage: isBot ? { text: message } : undefined,
+        }
     }, {
         quoted: props.answering,
     });
